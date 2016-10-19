@@ -1,9 +1,9 @@
 # Nuance SDK in Go
 [![GoDoc](https://godoc.org/github.com/nuveo/nuance?status.png)](https://godoc.org/github.com/nuveo/nuance)
 
-This is a wrap of OCR libraries provided by Nuance in their SDK.
+This project is a Nuance's SDK libraries wrapper in Go.
 
-The goal is to use the OCR SDK features without polluting the code written in Go with many C calls as well provide a more task-based API, therefore this package does not exposes all nuance C API, instead many calls in C will be condensed in a few Go calls.
+Our goal is to use the OCR SDK features without littering the code written in Go with excessive C calls as well as providing a more task-based API. Therefore this package does not exposes all nuance C API but instead gather a bunch of C calls into a few Go calls.
 
 ## Examples
 
@@ -27,7 +27,7 @@ n.Free()
 ---
 ### Processes zones
 
-Processes image and template and extract information from zones.
+Process image/template and extract information.
 
 ```go
 n := nuveo.New()
@@ -50,27 +50,27 @@ if err != nil {
     fmt.Fatal("LoadFormTemplateLibrary failed:", err)
 }
 
-// loads and processes the image then returns a
-// map with the zone marked in the templete.
+// load and process the image then return a
+// map with the zone marked in the template.
 var ret map[string]string
 ret, err = n.OCRImgWithTemplate("sample.tif")
 if err != nil {
     fmt.Fatal("OCRImgWithTemplate failed:", err)
 }
 
-// echoes the result on the screen
+// echo the result on the screen
 for k, v := range ret {
     fmt.Println("k:", k, "v:", v)
 }
 
-// close the library and frees the memory
+// close the library and free the memory
 n.Quit()
 n.Free()
 ```
 
 ## Running the tests
 
-At this point of development to run unit tests is necessary to provide your own license files, templates and samples.
+At this point to run unit tests it's necessary to provide your own license files, templates and samples.
 
 ## Installation
 
@@ -103,4 +103,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-This project is a wrap to Go of libraries provided in the Nuance SDK
+This project is a Nuance's SDK libraries wrapper in Go.
